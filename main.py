@@ -1,5 +1,7 @@
+import uvicorn
 from fastapi import FastAPI
 from typing import Optional
+from pydantic import BaseModel
 
 app=FastAPI()
 
@@ -28,9 +30,17 @@ def comments(id:str):
     """ test"""
     return {'data':{'1', '2'}}
 
+class Blog(BaseModel):
+    tittle:str
+    body:str
+    published_at:Optional[bool]
+
+
 @app.post('/blog')
-def create_blog():
-    return {'data':'blog is created'}
+def create_blog(blog:Blog):
+    return {f'data':'blog is created with tittle at {blog.tittle}'}
+
+
 
 
 
