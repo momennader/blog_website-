@@ -1,7 +1,9 @@
 from fastapi import FastAPI
+from . import scehmas
 
 app=FastAPI()
 
+
 @app.post("/blog")
-def create():
-    return 'creating'
+def create(request: scehmas.Blog):
+    return request
