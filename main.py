@@ -1,4 +1,3 @@
-import uvicorn
 from fastapi import FastAPI
 from typing import Optional
 from pydantic import BaseModel
@@ -39,8 +38,3 @@ class Blog(BaseModel):
 @app.post('/blog')
 def create_blog(blog:Blog):
     return {f'data':'blog is created with tittle at {blog.tittle}'}
-
-
-
-
-
